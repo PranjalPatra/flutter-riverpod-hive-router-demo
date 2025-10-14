@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../controllers/todo_controller.dart';
 import '../models/todo.dart';
-import 'edit_todo_view.dart';
 
 class TodoListView extends ConsumerWidget {
   const TodoListView({super.key});
@@ -38,14 +38,7 @@ class TodoListView extends ConsumerWidget {
                     children: [
                       IconButton(
                         icon: const Icon(Icons.edit),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EditTodoView(id: t.id),
-                            ),
-                          );
-                        },
+                        onPressed: () => context.push('/edit/${t.id}'),
                       ),
                       IconButton(
                         icon: const Icon(Icons.delete),
@@ -57,12 +50,7 @@ class TodoListView extends ConsumerWidget {
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const EditTodoView()),
-          );
-        },
+        onPressed: () => context.push('/add'),
         child: const Icon(Icons.add),
       ),
     );

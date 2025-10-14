@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../controllers/todo_controller.dart';
 import '../controllers/todo_notifier.dart';
 import '../models/todo.dart';
@@ -40,7 +41,7 @@ class _EditTodoViewState extends ConsumerState<EditTodoView> {
     } else {
       controller.update(_editing!.id, text);
     }
-    Navigator.pop(context);
+    context.pop();
   }
 
   @override
