@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controllers/todo_controller.dart';
 import '../models/todo.dart';
+import 'edit_todo_view.dart';
 
 class TodoListView extends ConsumerWidget {
   const TodoListView({super.key});
@@ -32,16 +33,35 @@ class TodoListView extends ConsumerWidget {
                     value: t.isCompleted,
                     onChanged: (_) => controller.toggleComplete(t.id),
                   ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () => controller.remove(t.id),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditTodoView(id: t.id),
+                            ),
+                          );
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () => controller.remove(t.id),
+                      ),
+                    ],
                   ),
                 );
               },
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.add('Test todo ${DateTime.now().millisecond}');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EditTodoView()),
+          );
         },
         child: const Icon(Icons.add),
       ),
