@@ -1,5 +1,5 @@
 name: todo_riverpod_demo
-description: "A new Flutter project."
+description: "A Riverpod demo application. It is a simple todo app with Hive as local database and GoRouter for navigation."
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,11 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  hive_ce: ^2.6.0
+  hive_ce_flutter: ^2.0.0
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  hive_ce_generator: ^1.6.0
+  build_runner: ^2.1.7
 
 flutter:
   uses-material-design: true
