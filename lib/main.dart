@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'models/todo.dart';
 
@@ -9,7 +10,7 @@ Future<void> main() async {
   Hive.registerAdapter(TodoAdapter());
   await Hive.openBox<Todo>('todos_box');
 
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -20,7 +21,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const Scaffold(body: Center(child: Text('Hive Setup Complete!'))),
+      home: const Scaffold(
+        body: Center(child: Text('Riverpod Setup Complete!')),
+      ),
     );
   }
 }
