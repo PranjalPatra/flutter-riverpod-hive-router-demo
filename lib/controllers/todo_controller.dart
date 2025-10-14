@@ -3,7 +3,7 @@ import '../models/todo.dart';
 import 'todo_notifier.dart';
 
 class TodoController {
-  final Ref ref;
+  final WidgetRef ref;
   TodoController(this.ref);
 
   List<Todo> watchTodos() => ref.watch(todoProvider);
